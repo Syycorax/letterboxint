@@ -22,7 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':password' => $password,
                 ':date' => date('Y-m-d H:i:s')
             ]);
-
+            setcookie('username', $username, [
+                'expires' => time() + 3600,
+                'path' => '/',
+                'domain' => 'localhost',
+                'secure' => false,
+                'httponly' => false,
+                'samesite' => 'Lax'
+            ]);
             // Simple success response
             echo json_encode([
                 'success' => true,
