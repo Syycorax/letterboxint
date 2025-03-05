@@ -139,7 +139,7 @@ function createAuthModal(type) {
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h2>${isSignUp ? 'Sign Up' : 'Sign In'}</h2>
-            <form id="auth-form">
+            <form id="auth-form" action="register.php" method="POST">
                 ${isSignUp ? `
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -157,7 +157,7 @@ function createAuthModal(type) {
                 ${isSignUp ? `
                     <div class="form-group">
                         <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" name="confirm-password" required>
+                        <input type="password" id="confirm-password" required>
                     </div>
                 ` : ''}
                 <button type="submit">${isSignUp ? 'Create Account' : 'Sign In'}</button>
@@ -191,7 +191,7 @@ function createAuthModal(type) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Basic validation for sign up
+        // Basic client-side validation
         if (isSignUp) {
             const password = form.querySelector('#password').value;
             const confirmPassword = form.querySelector('#confirm-password').value;
@@ -202,9 +202,41 @@ function createAuthModal(type) {
             }
         }
 
-        // In a real app, you'd send these credentials to a backend
-        alert(`${isSignUp ? 'Signing Up' : 'Signing In'} with: ${form.querySelector('#email').value}`);
-        modal.remove();
+        // Use Fetch API to submit form
+        const formData = new FormData(form);
+        
+        fetch('register.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data);
+            if (data.success) {
+                // Handle successful registration/login
+                alert(data.message);
+                
+                // Update UI or redirect
+                if (isSignUp) {
+                    // For sign up, you might want to auto-login or show a success message
+                    currentUser = new User(
+                        formData.get('username') || 'User', 
+                        formData.get('email')
+                    );
+                    updateAuthUI();
+                }
+                
+                // Close the modal
+                modal.remove();
+            } else {
+                // Handle errors
+                alert(data.message || 'Registration failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.'+error);
+        });
     });
 
     // Switch between sign in and sign up
@@ -216,38 +248,7 @@ function createAuthModal(type) {
             createAuthModal(isSignUp ? 'signin' : 'signup');
         });
     }
-        // Modify form submission handler
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Basic validation for sign up
-        if (isSignUp) {
-            const username = form.querySelector('#username').value;
-            const email = form.querySelector('#email').value;
-            const password = form.querySelector('#password').value;
-            const confirmPassword = form.querySelector('#confirm-password').value;
-            
-            if (password !== confirmPassword) {
-                alert("Passwords do not match!");
-                return;
-            }
-
-            // Create user and log in
-            currentUser = new User(username, email);
-        } else {
-            // Simulate login (in a real app, this would be a backend check)
-            const email = form.querySelector('#email').value;
-            currentUser = new User('MovieFan', email);
-        }
-
-        // Update UI to show logged-in state
-        updateAuthUI();
-        modal.remove();
-    });
-
-
 }
-
 // Add event listeners to sign in and sign up buttons
 document.addEventListener('DOMContentLoaded', () => {
     // Existing render functions...

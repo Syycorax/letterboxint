@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -136,7 +135,7 @@
             <a href="#">Instagram</a>
             <a href="#">Facebook</a>
         </div>
-        <p>&copy; 2024 Letterboxd Limited</p>
+        <p>&copy; 2024 Letterboxint Limited</p>
     </footer>
 
     <script src="script.js"></script>
