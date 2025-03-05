@@ -1,8 +1,8 @@
 CREATE TABLE user_account (
     user_id BIGINT AUTO_INCREMENT,
-    username VARCHAR(64),
+    username VARCHAR(64) UNIQUE,
     date_joined DATE,
-    email VARCHAR(320),
+    email VARCHAR(320) UNIQUE,
     password VARCHAR(256),
     PRIMARY KEY(user_id)
 );
