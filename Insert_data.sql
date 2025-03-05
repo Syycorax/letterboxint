@@ -1,57 +1,80 @@
--- Insert Directors
-INSERT INTO director (director_id, name, birthdate, nationality) VALUES
-(1, 'Christopher Nolan', '1970-07-30', 'British-American'),
-(2, 'Greta Gerwig', '1983-08-04', 'American'),
-(3, 'Denis Villeneuve', '1967-10-03', 'Canadian');
+-- Insertion de genres
+INSERT INTO genre (name) VALUES
+('Science-Fiction'),
+('Drame'),
+('Comédie'),
+('Action'),
+('Fantastique');
 
--- Insert Genres
-INSERT INTO genre (genre_id, name) VALUES
-(1, 'Science Fiction'),
-(2, 'Drama'),
-(3, 'Comedy'),
-(4, 'Action');
+-- Insertion de réalisateurs
+INSERT INTO director (name, birthdate, nationality) VALUES
+('Christopher Nolan', '1970-07-30', 'Britannique-Américain'),
+('Greta Gerwig', '1983-08-04', 'Américaine'),
+('Denis Villeneuve', '1967-10-03', 'Canadien'),
+('Quentin Tarantino', '1963-03-27', 'Américain'),
+('Bong Joon-ho', '1969-09-14', 'Sud-Coréen');
 
--- Insert Actors
-INSERT INTO actor (actor_id, name, nationality, birthdate) VALUES
-(1, 'Leonardo DiCaprio', 'American', '1974-11-11'),
-(2, 'Margot Robbie', 'Australian', '1990-07-02'),
-(3, 'Timothée Chalamet', 'American', '1995-12-27'),
-(4, 'Saoirse Ronan', 'Irish', '1994-04-12'),
-(5, 'Christian Bale', 'British', '1974-01-30');
+-- Insertion d'acteurs
+INSERT INTO actor (name, nationality, birthdate) VALUES
+('Leonardo DiCaprio', 'Américain', '1974-11-11'),
+('Margot Robbie', 'Australienne', '1990-07-02'),
+('Timothée Chalamet', 'Américain', '1995-12-27'),
+('Saoirse Ronan', 'Irlandaise', '1994-04-12'),
+('Christian Bale', 'Britannique', '1974-01-30'),
+('Samuel L. Jackson', 'Américain', '1948-12-21'),
+('Song Kang-ho', 'Sud-Coréen', '1967-01-17');
 
--- Insert Movies
-INSERT INTO movie (movie_id, title, year_released, synopsis, running_time, director_id, genre_id) VALUES
-(1, 'Inception', 2010, 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', 148, 1, 1,'https://image.tmdb.org/t/p/original/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg'),
-(2, 'Barbie', 2023, 'Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the complexities of human life.', 114, 2, 3, 'https://image.tmdb.org/t/p/original/dekMkQf0kqAmztUca9lX5e5Pjbp.jpg'),
-(3, 'Dune', 2021, 'A noble family becomes embroiled in a war for control over the galaxy''s most valuable asset while its heir becomes undertaking a transformative journey.', 155, 3, 1,'https://image.tmdb.org/t/p/original/cDbNAY0KM84cxXhmj8f0dLWza3t.jpg');
+-- Insertion de films
+INSERT INTO movie (title, year_released, synopsis, running_time, poster_path) VALUES
+('Inception', 2010, 'Un voleur qui s''approprie des secrets d''entreprises par la technologie de partage de rêves reçoit la tâche inverse d''implanter une idée dans l''esprit d''un P-DG.', 148, 'https://image.tmdb.org/t/p/original/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg'),
+('Barbie', 2023, 'Barbie et Ken passent le temps de leur vie dans le monde coloré et apparemment parfait de Barbie Land. Cependant, quand ils ont la chance d''aller dans le monde réel, ils découvrent rapidement les complexités de la vie humaine.', 114, 'https://image.tmdb.org/t/p/original/dekMkQf0kqAmztUca9lX5e5Pjbp.jpg'),
+('Dune', 2021, 'Une famille noble devient impliquée dans une guerre pour le contrôle du bien le plus précieux de la galaxie, tandis que son héritier entreprend un voyage transformateur.', 155, 'https://image.tmdb.org/t/p/original/cDbNAY0KM84cxXhmj8f0dLWza3t.jpg'),
+('Pulp Fiction', 1994, 'Les vies de deux tueurs à gages, d''un boxeur, d\'un gangster et de sa femme s\'entremêlent dans quatre récits de violence et de rédemption.', 154, 'https://image.tmdb.org/t/p/original/jYqKxBbAUdfKq3BfHKivJytFiPL.jpg'),
+('Parasite', 2019, 'Toute la famille de Ki-taek est au chômage. Leur situation économique est précaire jusqu\'à ce que son fils trouve un emploi de tuteur dans une famille riche.', 132, 'https://image.tmdb.org/t/p/original/x23Fqkt00uqV2TzfSiB60hrc3HY.jpg');
 
--- Insert Casting
-INSERT INTO casting (casting_id, role, actor_id, movie_id) VALUES
-(1, 'Cobb', 1, 1),
-(2, 'Barbie', 2, 2),
-(3, 'Paul Atreides', 3, 3),
-(4, 'Lady Jessica', 4, 3),
-(5, 'Arthur', 5, 1);
+-- Insertion d'associations de genres
+INSERT INTO genre_association (movie_id, genre_id) VALUES
+(1, 1),  -- Inception - Science-Fiction
+(2, 3),  -- Barbie - Comédie
+(3, 1),  -- Dune - Science-Fiction
+(4, 2),  -- Pulp Fiction - Drame
+(5, 2);  -- Parasite - Drame
 
--- Insert User Accounts
-INSERT INTO user_account (user_id, username, date_joined, email, password) VALUES
-(1, 'movielover2024', '2024-01-15', 'cinephile@example.com', 'hashedpassword123'),
-(2, 'filmcritic', '2023-11-20', 'reviewer@example.com', 'securepassword456'),
-(3, 'streamingfan', '2024-02-01', 'watcher@example.com', 'passwordhash789');
+-- Insertion d'associations de réalisateurs
+INSERT INTO director_association (movie_id, director_id) VALUES
+(1, 1),  -- Inception - Christopher Nolan
+(2, 2),  -- Barbie - Greta Gerwig
+(3, 3),  -- Dune - Denis Villeneuve
+(4, 4),  -- Pulp Fiction - Quentin Tarantino
+(5, 5);  -- Parasite - Bong Joon-ho
 
--- Insert Reviews
-INSERT INTO review (review_id, note, comment, date_published, movie_id, user_id) VALUES
-(1, 9, 'Mind-bending and visually stunning! Nolan does it again.', '2024-03-01', 1, 1),
-(2, 8, 'Hilarious and surprisingly deep commentary on society.', '2024-03-02', 2, 2),
-(3, 10, 'Epic sci-fi that beautifully captures the essence of the book.', '2024-03-03', 3, 3);
+-- Insertion de castings
+INSERT INTO casting (role, actor_id, movie_id) VALUES
+('Cobb', 1, 1),
+('Barbie', 2, 2),
+('Paul Atreides', 3, 3),
+('Vincent Vega', 6, 4),
+('Kim Ki-taek', 7, 5);
 
--- Insert Watchlist
-INSERT INTO watchlist (id_watchlist, status, movie_id, user_id) VALUES
-(1, 'Watched', 1, 1),
-(2, 'To Watch', 2, 2),
-(3, 'Watching', 3, 3);
+-- Insertion de comptes utilisateurs
+INSERT INTO user_account (username, date_joined, email, password) VALUES
+('amourducinema', '2024-01-15', 'cinephile@exemple.com', 'motdepasse123'),
+('critiquedereve', '2023-11-20', 'critique@exemple.com', 'motdepasse456'),
+('fandefilms', '2024-02-01', 'spectateur@exemple.com', 'motdepasse789');
 
--- Insert Friendships
-INSERT INTO friendship (friendship_id, status, date_added, user_id_A, user_id_B) VALUES
-(1, 'Active', '2024-02-15', 1, 2),
-(2, 'Pending', '2024-02-20', 2, 3);
+-- Insertion de relations d'amitié
+INSERT INTO friendship (status, date_added, user_id_A, user_id_B) VALUES
+('Actif', '2024-02-15', 1, 2),
+('En attente', '2024-02-20', 2, 3);
+
+-- Insertion de listes de surveillance
+INSERT INTO watchlist (status, movie_id, user_id) VALUES
+('Vu', 1, 1),
+('À regarder', 2, 2),
+('En cours', 3, 3);
+
+-- Insertion de critiques
+INSERT INTO review (note, comment, date_published, movie_id, user_id) VALUES
+(9.0, 'Un film à l''architecture complexe et visuellement stupéfiant ! Nolan récidive.', '2024-03-01', 1, 1),
+(8.5, 'Hilarant et avec un commentaire surprenant sur la société.', '2024-03-02', 2, 2),
+(10.0, 'Une épopée de science-fiction qui capture magnifiquement l''essence du livre.', '2024-03-03', 3, 3);
