@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'success' => false,
                 'message' => 'Registration failed: ' . $e->getMessage()
             ]);
+            // set cookie to username
+            setcookie('username', $username, time() + 3600, '/');
         }
     } else {
         echo json_encode([

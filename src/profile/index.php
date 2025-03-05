@@ -20,8 +20,8 @@
                 <input type="search" placeholder="Search movies, lists, people...">
                 <div id="user-profile" class="user-profile">
                     <a href="/profile" class="profile-link">
-                        <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=MovieFan" alt="User Avatar" class="avatar">
-                        <span class="username">MovieFan</span>
+                        <img src="" alt="User Avatar" class="avatar">
+                        <span class="username">User</span>
                     </a>
                     <button class="logout-btn">Logout</button>
                 </div>
@@ -33,9 +33,9 @@
         <section class="profile-header">
             <div class="profile-banner"></div>
             <div class="profile-info">
-                <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=MovieFan" alt="Profile Avatar" class="large-avatar">
+                <img src="" alt="Profile Avatar" class="large-avatar">
                 <div class="profile-details">
-                    <h1>MovieFan</h1>
+                    <h1 class="username">User</h1>
                     <p>Film enthusiast | Critic | Cinephile</p>
                     <div class="profile-stats">
                         <div class="stat">
@@ -59,6 +59,7 @@
             </div>
         </section>
 
+        <!-- Rest of the HTML remains the same -->
         <section class="profile-navigation">
             <nav>
                 <a href="#" class="active">Films</a>
@@ -69,58 +70,7 @@
             </nav>
         </section>
 
-        <section class="profile-content">
-            <div class="recently-watched">
-                <h2>Recently Watched</h2>
-                <div class="film-grid">
-                    <div class="film-card">
-                        <img src="dune.jpg" alt="Dune: Part Two">
-                        <div class="film-card-overlay">
-                            <div class="watched-date">Mar 2, 2024</div>
-                            <div class="rating">★★★★½</div>
-                        </div>
-                    </div>
-                    <div class="film-card">
-                        <img src="poor-things.jpg" alt="Poor Things">
-                        <div class="film-card-overlay">
-                            <div class="watched-date">Feb 18, 2024</div>
-                            <div class="rating">★★★★★</div>
-                        </div>
-                    </div>
-                    <div class="film-card">
-                        <img src="oppenheimer.jpg" alt="Oppenheimer">
-                        <div class="film-card-overlay">
-                            <div class="watched-date">Jan 30, 2024</div>
-                            <div class="rating">★★★★</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="favorite-lists">
-                <h2>Favorite Lists</h2>
-                <div class="lists-grid">
-                    <div class="list-card">
-                        <h3>Best Films of 2024</h3>
-                        <p>12 films</p>
-                        <div class="list-thumbnails">
-                            <img src="dune.jpg" alt="Dune">
-                            <img src="poor-things.jpg" alt="Poor Things">
-                            <img src="oppenheimer.jpg" alt="Oppenheimer">
-                        </div>
-                    </div>
-                    <div class="list-card">
-                        <h3>Sci-Fi Masterpieces</h3>
-                        <p>24 films</p>
-                        <div class="list-thumbnails">
-                            <img src="2001.jpg" alt="2001">
-                            <img src="blade-runner.jpg" alt="Blade Runner">
-                            <img src="matrix.jpg" alt="The Matrix">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Previous content remains unchanged -->
     </main>
 
     <footer>

@@ -139,7 +139,7 @@ function createAuthModal(type) {
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h2>${isSignUp ? 'Sign Up' : 'Sign In'}</h2>
-            <form id="auth-form" action="register.php" method="POST">
+            <form id="auth-form" action="${isSignUp ? 'register.php' : 'login.php'}" method="POST">
                 ${isSignUp ? `
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -205,13 +205,12 @@ function createAuthModal(type) {
         // Use Fetch API to submit form
         const formData = new FormData(form);
         
-        fetch('register.php', {
+        fetch(isSignUp ? 'register.php' : 'login.php', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
-            alert(data);
             if (data.success) {
                 // Handle successful registration/login
                 alert(data.message);
@@ -224,18 +223,21 @@ function createAuthModal(type) {
                         formData.get('email')
                     );
                     updateAuthUI();
+                } else {
+                    // For login, handle redirect or UI update
+                    window.location.href = data.redirect || '/dashboard.php';
                 }
                 
                 // Close the modal
                 modal.remove();
             } else {
                 // Handle errors
-                alert(data.message || 'Registration failed');
+                alert(data.message || 'Authentication failed');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('An error occurred. Please try again.'+error);
+            alert('An error occurred. Please try again.');
         });
     });
 
