@@ -21,9 +21,9 @@ INSERT INTO actor (actor_id, name, nationality, birthdate) VALUES
 
 -- Insert Movies
 INSERT INTO movie (movie_id, title, year_released, synopsis, running_time, director_id, genre_id) VALUES
-(1, 'Inception', 2010, 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', 148, 1, 1),
-(2, 'Barbie', 2023, 'Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the complexities of human life.', 114, 2, 3),
-(3, 'Dune', 2021, 'A noble family becomes embroiled in a war for control over the galaxy''s most valuable asset while its heir becomes undertaking a transformative journey.', 155, 3, 1);
+(1, 'Inception', 2010, 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', 148, 1, 1,'https://image.tmdb.org/t/p/original/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg'),
+(2, 'Barbie', 2023, 'Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the complexities of human life.', 114, 2, 3, 'https://image.tmdb.org/t/p/original/dekMkQf0kqAmztUca9lX5e5Pjbp.jpg'),
+(3, 'Dune', 2021, 'A noble family becomes embroiled in a war for control over the galaxy''s most valuable asset while its heir becomes undertaking a transformative journey.', 155, 3, 1,'https://image.tmdb.org/t/p/original/cDbNAY0KM84cxXhmj8f0dLWza3t.jpg');
 
 -- Insert Casting
 INSERT INTO casting (casting_id, role, actor_id, movie_id) VALUES

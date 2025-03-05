@@ -48,6 +48,7 @@ CREATE TABLE movie (
     running_time SMALLINT,
     director_id BIGINT NOT NULL,
     genre_id BIGINT NOT NULL,
+    poster_path VARCHAR(256) DEFAULT NULL,
     PRIMARY KEY(movie_id),
     FOREIGN KEY(director_id) REFERENCES director(director_id),
     FOREIGN KEY(genre_id) REFERENCES genre(genre_id)

@@ -1,3 +1,23 @@
+<?php
+// Database connection
+$dsn = 'mysql:host=mysql;dbname=database';
+$dbUser = 'user';
+$dbPassword = 'password';
+
+try {
+    // Create PDO connection
+    $pdo = new PDO($dsn, $dbUser, $dbPassword);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Fetch trending movies
+    $sql = "SELECT title, poster_path FROM movie";
+    $stmt = $pdo->query($sql);
+    $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,7 +63,18 @@
         <section class="trending-films">
             <h2>Trending This Week</h2>
             <div class="film-grid" id="trending-films">
-                <!-- Films will be dynamically populated by JavaScript -->
+                <?php
+                if (!empty($movies)) {
+                    foreach ($movies as $movie) {
+                        echo '<div class="film-card">';
+                        echo '<img src="' . $movie["poster_path"] . '" alt="' . $movie["title"] . '">';
+                        echo '<h3>' . $movie["title"] . '</h3>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "No trending films found.";
+                }
+                ?>
             </div>
         </section>
 
