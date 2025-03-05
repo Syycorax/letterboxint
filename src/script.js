@@ -254,28 +254,41 @@ function createAuthModal(type) {
 }
 // Add event listeners to sign in and sign up buttons
 document.addEventListener('DOMContentLoaded', () => {
-    // Existing render functions...
-    // if cookie exists, set currentUser
-    if(document.cookie.includes('username')) {
-        // username = username cookie vlaue
-        username = document.cookie.split('=')[1];
+  // Existing render functions...
+  // if cookie exists, set currentUser
+  console.log(document.cookie); // PHPSESSID=d33a10af7e94bfa1ba03a74bffd59370; username=bancho
+  if (document.cookie.includes("username")) {
+    // get username from cookie
+    cookies = document.cookie.split(";")
+    cookies.forEach(function(cookie) {
+        if (cookie.includes("username")) {
+            username = cookie.split("=")[1];
+        }
+    });
+    if (username) {
         currentUser = new User(username);
         updateAuthUI();
+    } else {
+        console.error("Username invalid");
     }
-    // Add authentication modal event listeners
-    const signinBtn = document.querySelector('.login-btn');
-    const signupBtns = document.querySelectorAll('.signup-btn, .signup-large');
-    const signoutBtn = document.querySelector('.logout-btn');
+  } else {
+    console.log("No username cookie");
+  }
+  // Add authentication modal event listeners
+  const signinBtn = document.querySelector(".login-btn");
+  const signupBtns = document.querySelectorAll(".signup-btn, .signup-large");
+  const signoutBtn = document.querySelector(".logout-btn");
 
-    signinBtn.addEventListener('click', () => createAuthModal('signin'));
-    signupBtns.forEach(btn => {
-        btn.addEventListener('click', () => createAuthModal('signup'));
-    });
-    signoutBtn.addEventListener('click', () => {
-        // Clear username cookie
-        document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        currentUser = null;
-        updateAuthUI();
-    });
+  signinBtn.addEventListener("click", () => createAuthModal("signin"));
+  signupBtns.forEach((btn) => {
+    btn.addEventListener("click", () => createAuthModal("signup"));
+  });
+  signoutBtn.addEventListener("click", () => {
+    // Clear username cookie
+    document.cookie =
+      "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    currentUser = null;
+    updateAuthUI();
+  });
 });
 

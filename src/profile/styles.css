@@ -6,7 +6,6 @@
 
 .profile-header {
     position: relative;
-    margin-bottom: 2rem;
 }
 
 .profile-banner {
@@ -16,6 +15,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     z-index: 1;
 }
 
@@ -35,6 +35,7 @@
     border-radius: 50%;
     border: 5px solid var(--primary-bg);
     margin-right: 2rem;
+    background-color: #555;
 }
 
 .profile-details {
