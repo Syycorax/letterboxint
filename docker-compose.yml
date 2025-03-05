@@ -1,0 +1,50 @@
+services:
+  webserver:
+    container_name: proj-apache
+    image: php:8.2-apache
+    depends_on: 
+      - mysql
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=database
+    command: bash -c "docker-php-ext-install mysqli pdo pdo_mysql && apache2-foreground"
+    networks:
+      - app_network
+  mysql:
+    container_name: proj-mysql
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app_network
+  phpmyadmin:
+    container_name: proj-phpmyadmin
+    image: phpmyadmin:latest
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=user
+      - PMA_PASSWORD=password
+    networks:
+      - app_network
+volumes:
+  mysql_data:
+networks:
+  app_network:
+    driver: bridge

@@ -1,0 +1,258 @@
+:root {
+    --primary-bg: #14181c;
+    --secondary-bg: #1f2933;
+    --text-color: #ffffff;
+    --accent-color: #40bcf4;
+    --card-bg: #2c3440;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--secondary-bg);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-actions input {
+    padding: 0.5rem;
+    background-color: var(--card-bg);
+    border: none;
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+.login-btn, .signup-btn, .signup-large {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.login-btn:hover, .signup-btn:hover, .signup-large:hover {
+    opacity: 0.9;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: rgba(32, 48, 64, 0.5);
+}
+
+.hero h1 {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 2.5rem;
+}
+
+.trending-films, .recent-reviews, .popular-lists {
+    padding: 2rem;
+}
+
+.film-grid, .reviews-container, .lists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.film-card, .review-card, .list-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.film-card img, .list-card img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+footer {
+    background-color: var(--secondary-bg);
+    text-align: center;
+    padding: 2rem;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    margin: 0 0.5rem;
+    text-decoration: none;
+}
+
+/* Add to existing styles.css */
+.auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--secondary-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--card-bg);
+    border: none;
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.modal-footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+/* Add to existing styles.css */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user-profile.hidden {
+    display: none;
+}
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+}
+
+.username {
+    font-weight: 500;
+}
+
+.logout-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#auth-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#auth-buttons.hidden {
+    display: none;
+}
