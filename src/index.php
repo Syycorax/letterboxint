@@ -101,7 +101,7 @@ try {
                 <br>Tell your friends what's good.
             </h1>
             <div class="hero-cta">
-                <button class="signup-large">Start Tracking</button>
+                <button class="signup-large" id="start">Start Tracking</button>
             </div>
         </section>
 
