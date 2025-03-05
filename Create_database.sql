@@ -33,8 +33,8 @@ CREATE TABLE friendship(
    friendship_id BIGINT,
    status VARCHAR(32),
    date_added DATE,
-   user_id BIGINT NOT NULL,
-   user_id_1 BIGINT NOT NULL,
+   user_id_A BIGINT NOT NULL,
+   user_id_B BIGINT NOT NULL,
    PRIMARY KEY(friendship_id),
    FOREIGN KEY(user_id_A) REFERENCES user_account(user_id),
    FOREIGN KEY(user_id_B) REFERENCES user_account(user_id)
