@@ -11,16 +11,15 @@ let currentUser = null;
 
 // User class to simulate user data
 class User {
-    constructor(username, email, avatarUrl) {
+    constructor(username, avatarUrl) {
         this.username = username;
-        this.email = email;
         this.avatarUrl = avatarUrl || 'https://api.dicebear.com/8.x/avataaars/svg?seed=' + username;
     }
 }
 function updateAuthUI() {
     const authButtons = document.getElementById('auth-buttons');
     const userProfile = document.getElementById('user-profile');
-    
+    const start_button = document.getElementById('start');
     if (currentUser) {
         // Show user profile
         authButtons.classList.add('hidden');
@@ -32,10 +31,12 @@ function updateAuthUI() {
         
         avatarImg.src = currentUser.avatarUrl;
         usernameSpan.textContent = currentUser.username;
+        start_button.hidden = true;
     } else {
         // Show sign in/up buttons
         authButtons.classList.remove('hidden');
         userProfile.classList.add('hidden');
+        start_button.hidden = false;
     }
 }
 
@@ -237,7 +238,7 @@ function createAuthModal(type) {
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('An error occurred. Please try again.');
+            alert('An error occurred. Please try again', error);
         });
     });
 
@@ -254,14 +255,27 @@ function createAuthModal(type) {
 // Add event listeners to sign in and sign up buttons
 document.addEventListener('DOMContentLoaded', () => {
     // Existing render functions...
-
+    // if cookie exists, set currentUser
+    if(document.cookie.includes('username')) {
+        // username = username cookie vlaue
+        username = document.cookie.split('=')[1];
+        currentUser = new User(username);
+        updateAuthUI();
+    }
     // Add authentication modal event listeners
     const signinBtn = document.querySelector('.login-btn');
     const signupBtns = document.querySelectorAll('.signup-btn, .signup-large');
+    const signoutBtn = document.querySelector('.logout-btn');
 
     signinBtn.addEventListener('click', () => createAuthModal('signin'));
     signupBtns.forEach(btn => {
         btn.addEventListener('click', () => createAuthModal('signup'));
+    });
+    signoutBtn.addEventListener('click', () => {
+        // Clear username cookie
+        document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        currentUser = null;
+        updateAuthUI();
     });
 });
 
