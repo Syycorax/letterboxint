@@ -22,19 +22,61 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letterboxd</title>
+    <title>LetterboxINT</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add custom styles for the header */
+        nav {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            color: #fff;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        .user-actions input[type="search"] {
+            margin-right: 10px;
+            padding: 5px;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .spacer {
+            flex-grow: 1;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">Letterboxd</div>
+            <div class="logo">LetterboxINT</div>
             <div class="nav-links">
                 <a href="#">Films</a>
-                <a href="#">Lists</a>
-                <a href="#">Network</a>
+                <a href="#">Watchlist</a>
+                <a href="#">Friends</a>
                 <a href="#">Reviews</a>
             </div>
+            <div class="spacer"></div>
             <div class="user-actions">
                 <input type="search" placeholder="Search movies, lists, people...">
                 <div id="auth-buttons">
@@ -54,7 +96,10 @@ try {
 
     <main>
         <section class="hero">
-            <h1>Track films you've watched. Save those you want to see. Tell your friends what's good.</h1>
+            <h1>Track films you've watched.
+                <br>Save those you want to see.
+                <br>Tell your friends what's good.
+            </h1>
             <div class="hero-cta">
                 <button class="signup-large">Start Tracking</button>
             </div>
