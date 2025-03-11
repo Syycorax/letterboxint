@@ -68,19 +68,6 @@ const popularLists = [
     }
 ];
 
-function renderTrendingFilms() {
-    const filmGrid = document.getElementById('trending-films');
-    trendingFilms.forEach(film => {
-        const filmCard = document.createElement('div');
-        filmCard.classList.add('film-card');
-        filmCard.innerHTML = `
-            <img src="${film.poster}" alt="${film.title}">
-            <h3>${film.title}</h3>
-            <p>Rating: ${film.rating}/10</p>
-        `;
-        filmGrid.appendChild(filmCard);
-    });
-}
 
 function renderRecentReviews() {
     const reviewContainer = document.getElementById('recent-reviews');
