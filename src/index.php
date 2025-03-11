@@ -18,6 +18,40 @@ try {
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
+
+// if add to watchlist button is clicked
+if (isset($_POST['watch'])) {
+    if (!isset($_POST['remove'])) {
+        // Add movie to watchlist
+        $movie_id = $_POST['movie_id'];
+        $user = $_COOKIE['username'];
+        $user_id = getUserIdByUsername($user, $pdo);
+        $status = "to_watch";
+        $sql = "INSERT INTO watchlist (user_id,status,movie_id) VALUES (:user_id,:status, :movie_id)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':user_id' => $user_id, ':status' => $status, ':movie_id' => $movie_id]);
+    } else {
+        // Set movie as Seen
+        $movie_id = $_POST['movie_id'];
+        $user = $_COOKIE['username'];
+        $user_id = getUserIdByUsername($user, $pdo);
+        $status = "seen";
+        $sql = "UPDATE watchlist SET status = :status WHERE user_id = :user_id AND movie_id = :movie_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':user_id' => $user_id, ':status' => $status, ':movie_id' => $movie_id]);
+    }
+    // Refresh the page
+    header("Location: index.php");
+    exit();
+}
+
+function getUserIdByUsername($username, $pdo) {
+    $sql = "SELECT user_id FROM user_account WHERE username = :username";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':username' => $username]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result['user_id'] : null;
+}
 ?>
 
 <html lang="en">
@@ -135,7 +169,7 @@ try {
                         if ($film_in_user_watchlist) {
                             echo '<input type="hidden" name="remove" value="yes">';
                             echo '<input type="hidden" name="movie_id" value="' . $movie["movie_id"] . '">';
-                            echo '<button type="submit" name="watch" class="watchlist-btn">'."Seen".'</button>';
+                            echo '<button type="submit" name="watch" class="watchlist-btn">'."Mark as seen".'</button>';
                         } elseif ($film_seen) {
                         } 
                         else {
@@ -143,7 +177,7 @@ try {
                             echo '<button type="submit" name="watch" class="watchlist-btn">'."add to watchlist".'</button>';
                         }
                         echo '</form>';
-                        echo '<a class="rating-btn" name="' . $movie["title"] . '">'."Add review".'</a>';
+                        echo '<a href="/review?movie_id=' . $movie["movie_id"] . '" class="rating-btn">Add review</a>';                        
                         echo '</div>';
                     }
                     
