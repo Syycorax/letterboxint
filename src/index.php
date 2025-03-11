@@ -1,4 +1,6 @@
 <?php
+require_once('functions.php');
+
 // Database connection
 $dsn = 'mysql:host=mysql;dbname=database';
 $dbUser = 'user';
@@ -73,7 +75,7 @@ try {
             <div class="logo">LetterboxINT</div>
             <div class="nav-links">
                 <a href="#">Films</a>
-                <a href="#">Watchlist</a>
+                <a href="./watchlist">Watchlist</a>
                 <a href="#">Friends</a>
                 <a href="#">Reviews</a>
             </div>
@@ -209,12 +211,4 @@ if (isset($_POST['watch'])) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':user_id' => $user_id, ':status' => $status, ':movie_id' => $movie_id]);
     }
-}
-
-function getUserIdByUsername($username, $pdo) {
-    $sql = "SELECT user_id FROM user_account WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':username' => $username]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result ? $result['user_id'] : null;
 }
