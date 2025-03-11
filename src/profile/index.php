@@ -1,3 +1,49 @@
+<?php
+require_once('../functions.php');
+
+// Database connection
+$dsn = 'mysql:host=mysql;dbname=database';
+$dbUser = 'user';
+$dbPassword = 'password';
+
+// Check if user is logged in
+if (!isset($_COOKIE['username'])) {
+    echo "You need to be logged in to view your profile.";
+    exit;
+}
+
+try {
+    // Create PDO connection
+    $pdo = new PDO($dsn, $dbUser, $dbPassword);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $username = $_COOKIE['username'];
+    $user_id = getUserIdByUsername($username, $pdo);
+
+    // Fetch the number of films watched
+    $sql = "SELECT COUNT(*) AS films_watched FROM watchlist WHERE user_id = :user_id AND status = 'seen'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':user_id' => $user_id]);
+    $films_watched = $stmt->fetch(PDO::FETCH_ASSOC)['films_watched'];
+
+    // Fetch the number of films in the watchlist
+    $sql = "SELECT COUNT(DISTINCT movie_id) AS films_in_watchlist FROM watchlist WHERE user_id = :user_id AND status = 'to_watch'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':user_id' => $user_id]);
+    $films_in_watchlist = $stmt->fetch(PDO::FETCH_ASSOC)['films_in_watchlist'];
+
+    // Fetch the number of friends
+    $sql = "SELECT COUNT(*) AS friends FROM friendship WHERE (user_id_A = :user_id OR user_id_B = :user_id) AND status = 'Actif'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':user_id' => $user_id]);
+    $friends = $stmt->fetch(PDO::FETCH_ASSOC)['friends'];
+
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,16 +85,16 @@
                     <p>Film enthusiast | Critic | Cinephile</p>
                     <div class="profile-stats">
                         <div class="stat">
-                            <strong>236</strong>
-                            <span>Films Watched</span>
+                            <strong><?php echo $films_watched; ?></strong>
+                            <span>Films watched</span>
                         </div>
                         <div class="stat">
-                            <strong>42</strong>
-                            <span>Lists</span>
+                            <strong><?php echo $films_in_watchlist; ?></strong>
+                            <span>Films in Watchlist</span>
                         </div>
                         <div class="stat">
-                            <strong>1.3k</strong>
-                            <span>Followers</span>
+                            <strong><?php echo $friends; ?></strong>
+                            <span>Friends</span>
                         </div>
                     </div>
                     <div class="profile-actions">
