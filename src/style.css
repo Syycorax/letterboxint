@@ -87,7 +87,7 @@ header {
     font-size: 2.5rem;
 }
 
-.trending-films, .recent-reviews, .popular-lists {
+.trending-films, .recent-reviews, .popular-lists, .watchlist {
     padding: 2rem;
 }
 
