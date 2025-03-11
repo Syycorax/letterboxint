@@ -259,3 +259,49 @@ footer {
 #auth-buttons.hidden {
     display: none;
 }
+
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.user-actions input[type="search"] {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.spacer {
+    flex-grow: 1;
+}
