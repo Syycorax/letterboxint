@@ -265,6 +265,7 @@ function getUserIdByUsername($username, $pdo) {
         <div class="review-form">
             <?php if (isset($error)): ?>
                 <p class="error-message"><?php echo $error; ?></p>
+                <?php exit(); ?>
             <?php endif; ?>
             
             <?php if ($movie): ?>
@@ -274,10 +275,13 @@ function getUserIdByUsername($username, $pdo) {
                         <h2 class="movie-title"><?php echo $movie['title']; ?></h2>
                     </div>
                 </div>
-            <?php else: ?>
+            <?php elseif(!isset($_GET['review_success']) && !$error): ?>
                 <p class="error-message">No movie selected. Please select a movie to review.</p>
             <?php endif; ?>
-            
+            <?php if (isset($_GET['review_success'])): ?>
+                <?php $message = "Your review has been submitted!";?>
+                <p class="success-message"><?php echo $message; ?></p>
+            <?php endif; ?>
             <?php if ($movie): ?>
                 <form method="post" action="index.php">
                     <input type="hidden" name="movie_id" value="<?php echo $movie['movie_id']; ?>">
