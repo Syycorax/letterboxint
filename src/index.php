@@ -103,7 +103,7 @@ if (isset($_POST['watch'])) {
                 <a href="#">Films</a>
                 <a href="./watchlist">Watchlist</a>
                 <a href="#">Friends</a>
-                <a href="#">Reviews</a>
+                <a href="./reviews">Reviews</a>
             </div>
             <div class="spacer"></div>
             <div class="user-actions">

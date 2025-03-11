@@ -66,15 +66,3 @@ INSERT INTO user_account (username, date_joined, email, password) VALUES
 INSERT INTO friendship (status, date_added, user_id_A, user_id_B) VALUES
 ('Actif', '2024-02-15', 1, 2),
 ('En attente', '2024-02-20', 2, 3);
-
--- Insertion de listes de surveillance
-INSERT INTO watchlist (status, movie_id, user_id) VALUES
-('Vu', 1, 1),
-('À regarder', 2, 2),
-('En cours', 3, 3);
-
--- Insertion de critiques
-INSERT INTO review (note, comment, date_published, movie_id, user_id) VALUES
-(9.0, 'Un film à l''architecture complexe et visuellement stupéfiant ! Nolan récidive.', '2024-03-01', 1, 1),
-(8.5, 'Hilarant et avec un commentaire surprenant sur la société.', '2024-03-02', 2, 2),
-(10.0, 'Une épopée de science-fiction qui capture magnifiquement l''essence du livre.', '2024-03-03', 3, 3);
