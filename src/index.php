@@ -175,7 +175,7 @@ function getUserIdByUsername($username, $pdo) {
                             echo '<button type="submit" name="watch" class="watchlist-btn">'."add to watchlist".'</button>';
                         }
                         echo '</form>';
-                        echo '<a class="rating-btn" name="' . $movie["title"] . '">'."Add review".'</a>';
+                        echo '<a href="/review?movie_id=' . $movie["movie_id"] . '" class="rating-btn">Add review</a>';                        
                         echo '</div>';
                     }
                     
