@@ -273,7 +273,7 @@ try {
                     
                     <h3>Your Review</h3>
                     <p class="placeholder-text">Share your thoughts on the film. What did you like or dislike? What stood out to you?</p>
-                    <textarea name="comment" placeholder="Write your review here..." required></textarea>
+                    <textarea maxlength="2045" name="comment" placeholder="Write your review here..." required></textarea>
                     
                     <button type="submit" name="submit_review" class="submit-btn">Post Review</button>
                 </form>

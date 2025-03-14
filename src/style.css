@@ -91,13 +91,13 @@ header {
     padding: 2rem;
 }
 
-.film-grid, .reviews-container, .lists-grid {
+.film-grid, .lists-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
 }
 
-.film-card, .review-card, .list-card {
+.film-card, .list-card {
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 1rem;

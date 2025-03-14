@@ -81,13 +81,13 @@ function generateStarRating($rating) {
     <title>My Reviews | LetterboxINT</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        /* Review list styles */
+            /* Review list styles */
         .reviews-container {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         .review-card {
             background-color: #2c3440;
             border-radius: 5px;
@@ -95,64 +95,68 @@ function generateStarRating($rating) {
             padding: 20px;
             display: flex;
             position: relative;
+            /* No width constraints to allow natural flow */
         }
-        
+
         .review-poster {
             width: 100px;
             min-width: 100px;
             border-radius: 4px;
             margin-right: 20px;
+            height: 100%;
         }
-        
+
         .review-content {
             flex-grow: 1;
+            min-width: 0; /* This is crucial - allows the content to shrink below its natural width */
         }
-        
+
         .review-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 10px;
         }
-        
+
         .review-title {
             font-size: 1.4em;
             font-weight: bold;
             margin: 0;
         }
-        
+
         .review-date {
             color: #aaa;
             font-size: 0.9em;
             margin-bottom: 5px;
         }
-        
+
         .star-rating {
             margin: 10px 0;
             font-size: 1.2em;
         }
-        
+
         .star {
             color: #ddd;
             margin-right: 2px;
         }
-        
+
         .star.filled {
             color: #f90;
         }
-        
+
         .review-text {
             margin: 15px 0;
             line-height: 1.6;
             white-space: pre-line;
         }
-        
+
         .review-actions {
             margin-top: 15px;
             display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap to next line when space is limited */
             gap: 10px;
         }
-        
+
         .edit-btn, .delete-btn {
             padding: 6px 12px;
             border-radius: 3px;
@@ -161,37 +165,37 @@ function generateStarRating($rating) {
             background: none;
             border: 1px solid;
         }
-        
+
         .edit-btn {
             border-color: #40bcf4;
             color: #40bcf4;
         }
-        
+
         .delete-btn {
             border-color: #ff6b6b;
             color: #ff6b6b;
         }
-        
+
         .edit-btn:hover {
             background-color: #40bcf41a;
         }
-        
+
         .delete-btn:hover {
             background-color: #ff6b6b1a;
         }
-        
+
         .login-required {
             text-align: center;
             padding: 40px 20px;
             background-color: #2c3440;
             border-radius: 5px;
         }
-        
+
         .page-title {
             text-align: center;
             margin: 30px 0;
         }
-        
+
         .alert {
             background-color: #4caf5033;
             color: #4caf50;
@@ -200,7 +204,7 @@ function generateStarRating($rating) {
             margin-bottom: 20px;
             text-align: center;
         }
-        
+
         .empty-reviews {
             text-align: center;
             padding: 30px;
@@ -208,7 +212,7 @@ function generateStarRating($rating) {
             border-radius: 5px;
             color: #aaa;
         }
-        
+
         .start-reviewing {
             margin-top: 20px;
             display: inline-block;
@@ -219,7 +223,7 @@ function generateStarRating($rating) {
             text-decoration: none;
             font-weight: bold;
         }
-        
+
         .delete-confirm-dialog {
             display: none;
             position: fixed;
@@ -232,7 +236,7 @@ function generateStarRating($rating) {
             align-items: center;
             justify-content: center;
         }
-        
+
         .delete-confirm-content {
             background-color: #2c3440;
             padding: 20px;
@@ -240,14 +244,14 @@ function generateStarRating($rating) {
             max-width: 400px;
             width: 100%;
         }
-        
+
         .delete-confirm-actions {
             display: flex;
             justify-content: flex-end;
             gap: 10px;
             margin-top: 20px;
         }
-        
+
         .delete-confirm-cancel {
             padding: 8px 16px;
             background: none;
@@ -256,7 +260,7 @@ function generateStarRating($rating) {
             border-radius: 3px;
             cursor: pointer;
         }
-        
+
         .delete-confirm-proceed {
             padding: 8px 16px;
             background-color: #ff6b6b;
@@ -265,7 +269,7 @@ function generateStarRating($rating) {
             border-radius: 3px;
             cursor: pointer;
         }
-        
+
         /* Header styles from index.php */
         nav {
             display: flex;
@@ -275,47 +279,59 @@ function generateStarRating($rating) {
             padding: 10px 20px;
             color: #fff;
         }
-        
+
         .nav-container {
             display: flex;
             align-items: center;
             flex-grow: 1;
         }
-        
+
         .nav-links {
             display: flex;
             align-items: center;
             margin-left: 20px;
         }
-        
+
         .nav-links a {
             margin: 0 10px;
             color: #fff;
             text-decoration: none;
         }
 
-        
         .user-actions {
             display: flex;
             align-items: center;
         }
-        
+
         .user-actions input[type="search"] {
             margin-right: 10px;
             padding: 5px;
         }
-        
+
         .logo {
             font-size: 1.5em;
             font-weight: bold;
         }
-        
+
         .spacer {
             flex-grow: 1;
         }
-        
+
         .hidden {
             display: none;
+        }
+
+        /* Media queries for responsive design */
+        @media (max-width: 500px) {
+            .review-card {
+                flex-direction: column; /* Stack vertically on smaller screens */
+            }
+            
+            .review-poster {
+                width: 100px;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
