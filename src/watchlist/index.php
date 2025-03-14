@@ -4,6 +4,7 @@ require_once('../functions.php');
 $dsn = 'mysql:host=mysql;dbname=database';
 $dbUser = 'user';
 $dbPassword = 'password';
+$page = "Watchlist";
 
 // Check if user is logged in
 if (!isset($_COOKIE['username'])) {
@@ -52,33 +53,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">LetterboxINT</div>
-            <div class="nav-links">
-                <a href="#">Films</a>
-                <a href="#">Watchlist</a>
-                <a href="#">Friends</a>
-                <a href="#">Reviews</a>
-            </div>
-            <div class="spacer"></div>
-            <div class="user-actions">
-                <input type="search" placeholder="Search movies, lists, people...">
-                <div id="auth-buttons">
-                    <button class="login-btn">Sign In</button>
-                    <button class="signup-btn">Sign Up</button>
-                </div>
-                <div id="user-profile" class="user-profile hidden">
-                    <a href="/profile" class="profile-link">
-                        <img src="" alt="User Avatar" class="avatar">
-                        <span class="username"></span>
-                    </a>
-                    <button class="logout-btn">Logout</button>
-                </div>
-            </div>
-        </nav>
-    </header>
-
+    <?php require_once("../header.php")?>
     <main>
         <section class="watchlist">
             <h2>Your watchlist</h2>
@@ -125,21 +100,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </section>
     </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="#">About</a>
-            <a href="#">Help</a>
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-        </div>
-        <div class="social-links">
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-        </div>
-        <p>&copy; 2024 Letterboxd Limited</p>
-    </footer>
+<?php require_once("../footer.php");?>
 
     <script src="../script.js"></script>
 </body>

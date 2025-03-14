@@ -3,6 +3,10 @@
 $dsn = 'mysql:host=mysql;dbname=database';
 $dbUser = 'user';
 $dbPassword = 'password';
+if (!isset($getUserIdByUsername)) {
+    require_once("../functions.php");
+}
+$page = "Reviews";
 
 try {
     // Create PDO connection
@@ -45,15 +49,6 @@ try {
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
-
-function getUserIdByUsername($username, $pdo) {
-    $sql = "SELECT user_id FROM user_account WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':username' => $username]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result ? $result['user_id'] : null;
-}
-
 // Format date to a more readable format
 function formatDate($dateString) {
     $date = new DateTime($dateString);
@@ -298,11 +293,7 @@ function generateStarRating($rating) {
             color: #fff;
             text-decoration: none;
         }
-        
-        .nav-links a.active {
-            color: #ff8000;
-            font-weight: bold;
-        }
+
         
         .user-actions {
             display: flex;
@@ -329,32 +320,7 @@ function generateStarRating($rating) {
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">LetterboxINT</div>
-            <div class="nav-links">
-                <a href="index.php">Films</a>
-                <a href="#">Watchlist</a>
-                <a href="#">Friends</a>
-                <a href="index.php" class="active">Reviews</a>
-            </div>
-            <div class="spacer"></div>
-            <div class="user-actions">
-                <input type="search" placeholder="Search movies, lists, people...">
-                <div id="auth-buttons" <?php echo $is_logged_in ? 'class="hidden"' : ''; ?>>
-                    <button class="login-btn">Sign In</button>
-                    <button class="signup-btn">Sign Up</button>
-                </div>
-                <div id="user-profile" class="user-profile <?php echo !$is_logged_in ? 'hidden' : ''; ?>">
-                    <a href="/profile" class="profile-link">
-                        <img src="" alt="User Avatar" class="avatar">
-                        <span class="username"><?php echo $is_logged_in ? htmlspecialchars($username) : ''; ?></span>
-                    </a>
-                    <button class="logout-btn">Logout</button>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php require_once("../header.php")?>
 
     <main>
         <h1 class="page-title">My Reviews</h1>
@@ -413,20 +379,7 @@ function generateStarRating($rating) {
         </div>
     </main>
 
-    <footer>
-        <div class="footer-links">
-            <a href="#">About</a>
-            <a href="#">Help</a>
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-        </div>
-        <div class="social-links">
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-        </div>
-        <p>&copy; 2024 Letterboxd Limited</p>
-    </footer>
+<?php require_once("../footer.php");?>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

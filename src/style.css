@@ -309,3 +309,7 @@ nav {
 a{
     text-decoration: none;
 }
+.nav-links a.active {
+    color: #ff8000;
+    font-weight: bold;
+}
