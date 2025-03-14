@@ -62,6 +62,9 @@ INSERT INTO user_account (username, date_joined, email, password) VALUES
 ('critiquedereve', '2023-11-20', 'critique@exemple.com', 'motdepasse456'),
 ('fandefilms', '2024-02-01', 'spectateur@exemple.com', 'motdepasse789');
 
+INSERT INTO user_account (username, date_joined, email, password, is_admin) VALUES
+('admin', '2024-02-01', ' 'admin@admin.com', 'admin' , TRUE);
+
 -- Insertion de relations d'amitié
 INSERT INTO friendship (status, date_added, user_id_A, user_id_B) VALUES
 ('Actif', '2024-02-15', 1, 2),

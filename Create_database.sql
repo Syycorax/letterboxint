@@ -1,10 +1,11 @@
 CREATE TABLE user_account(
    user_id BIGINT AUTO_INCREMENT,
-   username VARCHAR(64),
+   username VARCHAR(64) UNIQUE,
    date_joined DATE,
-   email VARCHAR(320),
+   email VARCHAR(320) UNIQUE,
    password VARCHAR(256),
-   PRIMARY KEY(user_id)
+   PRIMARY KEY(user_id),
+   is_admin BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE movie(
@@ -46,6 +47,7 @@ CREATE TABLE friendship(
    user_id_A BIGINT NOT NULL,
    user_id_B BIGINT NOT NULL,
    PRIMARY KEY(friendship_id),
+   CONSTRAINT unique_user_pair UNIQUE(user_id_A, user_id_B),
    FOREIGN KEY(user_id_A) REFERENCES user_account(user_id),
    FOREIGN KEY(user_id_B) REFERENCES user_account(user_id)
 );
@@ -59,7 +61,8 @@ CREATE TABLE review(
    user_id BIGINT NOT NULL,
    PRIMARY KEY(review_id),
    FOREIGN KEY(movie_id) REFERENCES movie(movie_id),
-   FOREIGN KEY(user_id) REFERENCES user_account(user_id)
+   FOREIGN KEY(user_id) REFERENCES user_account(user_id),
+   CONSTRAINT unique_review UNIQUE(movie_id, user_id)
 );
 
 CREATE TABLE watchlist(
@@ -69,7 +72,8 @@ CREATE TABLE watchlist(
    user_id BIGINT NOT NULL,
    PRIMARY KEY(id_watchlist),
    FOREIGN KEY(movie_id) REFERENCES movie(movie_id),
-   FOREIGN KEY(user_id) REFERENCES user_account(user_id)
+   FOREIGN KEY(user_id) REFERENCES user_account(user_id),
+   CONSTRAINT unique_watchlist UNIQUE(movie_id, user_id)
 );
 
 CREATE TABLE casting(
