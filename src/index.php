@@ -64,7 +64,9 @@ require_once("header.php");
                 if (!empty($movies)) {
                     foreach ($movies as $movie) {
                         echo '<div class="film-card">';
+                        echo '<a href="/movie?movie_id=' . $movie["movie_id"] . '">';
                         echo '<img src="' . $movie["poster_path"] . '" alt="' . $movie["title"] . '">';
+                        echo '</a>';
                         echo '<h3>' . $movie["title"] . '</h3>';
                         echo '<form method="post" action="index.php">';
                         $film_in_user_watchlist = false;

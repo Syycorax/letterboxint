@@ -60,10 +60,11 @@ require_once("functions.php");?>
                 <a href="/watchlist" class="<?= $page === 'Watchlist' ? 'active' : '' ?>">Watchlist</a>
                 <a href="/friends" class="<?= $page === 'Friends' ? 'active' : '' ?>">Friends</a>
                 <a href="/reviews" class="<?= $page === 'Reviews' ? 'active' : '' ?>">Reviews</a>
+                <a href="/movie" class="<?= $page === 'Movie' ? 'active' : '' ?>">Movie</a>
             </div>
             <div class="spacer"></div>
             <div class="user-actions">
-                <input type="search" placeholder="Search movies, lists, people...">
+                <!-- <input type="search" placeholder="Search movies, lists, people..."> -->
                 <div id="auth-buttons">
                     <button class="login-btn">Sign In</button>
                     <button class="signup-btn">Sign Up</button>

@@ -58,7 +58,7 @@ header {
     border-radius: 4px;
 }
 
-.login-btn, .signup-btn, .signup-large,.watchlist-btn,.rating-btn{
+.login-btn, .signup-btn, .signup-large,.watchlist-btn,.rating-btn,.add-btn{
     background-color: var(--accent-color);
     color: var(--primary-bg);
     border: none;
@@ -68,7 +68,7 @@ header {
     transition: opacity 0.3s ease;
 }
 
-.login-btn:hover, .signup-btn:hover, .signup-large:hover .watchlist-btn:hover,.rating-btn:hover{
+.login-btn:hover, .signup-btn:hover, .signup-large:hover .watchlist-btn:hover,.rating-btn:hover,.add-btn:hover{
     opacity: 0.9;
 }
 
@@ -312,4 +312,695 @@ a{
 .nav-links a.active {
     color: #ff8000;
     font-weight: bold;
+}
+/* Movie Details Specific Styles */
+.movie-details {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.movie-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.movie-poster {
+    flex: 0 0 300px;
+}
+
+.movie-poster img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.no-poster {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    color: #999;
+}
+
+.movie-info {
+    flex: 1;
+}
+
+.movie-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.movie-info .year {
+    color: #ccc;
+    font-weight: normal;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.genre-tag {
+    background-color: var(--card-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.rating {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.rating .star {
+    color: #f90;
+    padding-right: 0.25rem;
+}
+
+.reviews-count {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.runtime {
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.actions form {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #ccc;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-review {
+    background-color: #ff8000;
+    color: white;
+}
+
+.btn-review:hover {
+    background-color: #ff9a33;
+}
+
+.synopsis {
+    margin-bottom: 2rem;
+}
+
+.synopsis h3 {
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+.synopsis p {
+    line-height: 1.6;
+}
+
+.movie-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.movie-details-grid h3 {
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
+.people-list {
+    list-style: none;
+}
+
+.people-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+}
+
+.people-list li:last-child {
+    border-bottom: none;
+}
+
+.people-list .name {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.people-list .role {
+    color: #ccc;
+    font-style: italic;
+    margin-bottom: 0.25rem;
+}
+
+.people-list .details {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.people-list .details span {
+    margin-right: 1rem;
+}
+
+.reviews-section {
+    margin-top: 2rem;
+}
+
+.reviews-section h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
+}
+
+.no-reviews {
+    color: #aaa;
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.review {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.reviewer {
+    font-weight: bold;
+}
+
+.review-date {
+    color: #aaa;
+}
+
+.review-rating .star {
+    color: #f90;
+}
+
+.review-body {
+    line-height: 1.6;
+}
+
+.write-review {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .movie-header {
+        flex-direction: column;
+    }
+    
+    .movie-poster {
+        flex: 0 0 auto;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .actions form {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+/* Friends page specific styles */
+.friends-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+}
+
+.alert-error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #F44336;
+    border: 1px solid #F44336;
+}
+
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.friends-section {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.friends-section h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
+    color: var(--accent-color);
+}
+
+.friends-section h3 {
+    margin: 1rem 0;
+    color: #ccc;
+}
+
+.add-friend-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 0.5rem;
+    background-color: var(--primary-bg);
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+li {
+    list-style: none;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Friends page specific styles */
+.friends-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+    font-size: 2.5rem;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+}
+
+.alert-error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #F44336;
+    border: 1px solid #F44336;
+}
+
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.friends-section {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.friends-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.friends-section h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
+    color: var(--accent-color);
+}
+
+.friends-section h3 {
+    margin: 1rem 0;
+    color: #ccc;
+}
+
+.add-friend-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 0.75rem;
+    background-color: var(--primary-bg);
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(64, 188, 244, 0.2);
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap; /* Prevent button text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    max-width: 120px; /* Limit maximum width of buttons */
+}
+
+.btn-small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    max-width: 80px; /* Smaller max width for small buttons */
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+.btn-primary:hover {
+    background-color: #2eaae4;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #45a049;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.user-list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    position: relative;
+    transition: background-color 0.2s ease;
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+}
+
+.user-card:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+    margin-right: 1rem;
+    flex-shrink: 0; /* Prevent avatar from shrinking */
+}
+
+.username {
+    font-weight: 500;
+    margin-right: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px; /* Limit username width */
+}
+
+.date-added {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-right: 1rem;
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevent date from shrinking */
+}
+
+.friend-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+    flex-shrink: 0; /* Prevent actions from shrinking */
+}
+
+.friend-actions form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.add-btn {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
+}
+
+.add-btn:hover {
+    background-color: #2eaae4;
+}
+
+.potential-friends {
+    margin-top: 1.5rem;
+}
+
+.no-items {
+    color: #aaa;
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-style: italic;
+}
+
+.friends-list {
+    flex: 1;
+}
+
+/* Tooltip for showing full username on hover */
+.username {
+    position: relative;
+}
+
+.username:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    z-index: 10;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .friends-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-card {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .username {
+        max-width: calc(100% - 150px); /* Adjust based on available space */
+    }
+    
+    .friend-actions {
+        width: 100%;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+    }
+    
+    .date-added {
+        margin-left: auto;
+    }
+}
+
+/* Additional responsive adjustments for very small screens */
+@media (max-width: 480px) {
+    .user-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .avatar {
+        margin-bottom: 0.5rem;
+    }
+    
+    .username {
+        max-width: 100%;
+        margin-bottom: 0.25rem;
+    }
+    
+    .date-added {
+        margin-left: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .friend-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .btn, .btn-small {
+        min-width: 60px;
+        text-align: center;
+    }
 }
