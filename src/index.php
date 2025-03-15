@@ -5,7 +5,7 @@ require_once('functions.php');
 $dsn = 'mysql:host=mysql;dbname=database';
 $dbUser = 'user';
 $dbPassword = 'password';
-$page = "Films";
+$page = "Home";
 try {
     // Create PDO connection
     $pdo = new PDO($dsn, $dbUser, $dbPassword);

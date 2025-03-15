@@ -5,10 +5,11 @@ require_once("functions.php");?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LetterboxINT</title>
     <link rel="stylesheet" href="/style.css">
+    <script src="/all.js"></script>
     <style>
         /* Add custom styles for the header */
         nav {
@@ -56,7 +57,7 @@ require_once("functions.php");?>
         <nav>
             <div class="logo">LetterboxINT</div>
             <div class="nav-links">
-                <a href="/" class="<?= $page === 'Films' ? 'active' : '' ?>">Films</a>
+                <a href="/" class="<?= $page === 'Home' ? 'active' : '' ?>">Home</a>
                 <a href="/watchlist" class="<?= $page === 'Watchlist' ? 'active' : '' ?>">Watchlist</a>
                 <a href="/friends" class="<?= $page === 'Friends' ? 'active' : '' ?>">Friends</a>
                 <a href="/reviews" class="<?= $page === 'Reviews' ? 'active' : '' ?>">Reviews</a>
