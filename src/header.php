@@ -81,7 +81,6 @@ try {
             </div>
             <div class="spacer"></div>
             <div class="user-actions">
-                <!-- <input type="search" placeholder="Search movies, lists, people..."> -->
                 <div id="auth-buttons">
                     <button class="login-btn">Sign In</button>
                     <button class="signup-btn">Sign Up</button>

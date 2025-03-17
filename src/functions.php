@@ -24,7 +24,9 @@ function createMovieCard($movie, $pdo) {
     }
 
     $html = '<div class="film-card">';
+    $html .= '<a href="/movie?movie_id=' . $movie["movie_id"] . '">';
     $html .= '<img src="' . $movie["poster_path"] . '" alt="' . $movie["title"] . '">';
+    $html .= '</a>';
     $html .= '<h3><a href="/movie?movie_id=' . $movie["movie_id"] . '">' . $movie["title"] . '</a></h3>';
     $html .= '<form method="post" action="index.php">';
     if ($film_in_user_watchlist) {
