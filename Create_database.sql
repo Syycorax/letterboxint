@@ -66,7 +66,7 @@ CREATE TABLE watchlist(
    user_id BIGINT NOT NULL,
    PRIMARY KEY(id_watchlist),
    FOREIGN KEY(movie_id) REFERENCES movie(movie_id) ON DELETE CASCADE,
-   FOREIGN KEY(user_id) REFERENCES user_account(user_id) ,
+   FOREIGN KEY(user_id) REFERENCES user_account(user_id) ON DELETE CASCADE,
    CONSTRAINT unique_watchlist UNIQUE(movie_id, user_id)
 );
 CREATE TABLE casting(
@@ -112,4 +112,10 @@ GRANT SELECT, INSERT, UPDATE ON database.review TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.user_account TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.watchlist TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.friendship TO 'utilisateur'@'%';
+GRANT SELECT ON  database.casting TO 'utilisateur'@'%';
+GRANT SELECT ON database.genre_association TO 'utilisateur'@'%';
+GRANT SELECT ON database.director_association TO 'utilisateur'@'%';
+GRANT SELECT ON database.genre TO 'utilisateur'@'%';
+GRANT SELECT ON database.director TO 'utilisateur'@'%';
+GRANT SELECT ON database.actor TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE, DELETE on *.* TO 'admin'@'%';

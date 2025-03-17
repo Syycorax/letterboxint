@@ -165,6 +165,7 @@ require_once("../header.php");
         padding: 10px;
         margin-bottom: 20px;
         border-left: 5px solid #4CAF50;
+        color: #000000;
     }
 </style>
 

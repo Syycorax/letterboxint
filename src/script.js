@@ -9,13 +9,6 @@ const trendingFilms = [
 ];
 let currentUser = null;
 
-// User class to simulate user data
-class User {
-    constructor(username, avatarUrl) {
-        this.username = username;
-        this.avatarUrl = avatarUrl || 'https://api.dicebear.com/8.x/avataaars/svg?seed=' + username;
-    }
-}
 function updateAuthUI() {
     const authButtons = document.getElementById('auth-buttons');
     const userProfile = document.getElementById('user-profile');
