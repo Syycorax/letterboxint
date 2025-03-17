@@ -107,6 +107,7 @@ WHERE is_admin = FALSE;
 
 CREATE USER 'utilisateur'@'%' IDENTIFIED BY 'password';
 CREATE USER 'admin'@'%' IDENTIFIED BY 'adminpassword';
+GRANT SELECT, INSERT, UPDATE ON database.movie TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.review TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.user_account TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.watchlist TO 'utilisateur'@'%';
