@@ -48,10 +48,7 @@ require_once("header.php");
 ?>
     <main>
         <section class="hero">
-            <h1>Track films you've watched.
-                <br>Save those you want to see.
-                <br>Tell your friends what's good.
-            </h1>
+            <h1>Track films you've watched.<br>Save those you want to see.<br>Tell your friends what's good.</h1>
             <div class="hero-cta">
                 <button class="signup-large login-btn" id="start">Start Tracking</button>
             </div>
