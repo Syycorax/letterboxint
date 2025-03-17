@@ -12,6 +12,33 @@ try {
     $pdo = new PDO($dsn, $dbUser, $dbPassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
+    if (isset($_POST['watch'])) {
+        if (!isset($_POST['remove'])) {
+            // Add movie to watchlist
+            $movie_id = $_POST['movie_id'];
+            $user = $_COOKIE['username'];
+            $user_id = getUserIdByUsername($user, $pdo);
+            $status = "to_watch";
+            $sql = "INSERT INTO watchlist (user_id,status,movie_id) VALUES (:user_id,:status, :movie_id)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':user_id' => $user_id, ':status' => $status, ':movie_id' => $movie_id]);
+        } else {
+            // Set movie as Seen
+            $movie_id = $_POST['movie_id'];
+            $user = $_COOKIE['username'];
+            $user_id = getUserIdByUsername($user, $pdo);
+            $status = "seen";
+            $sql = "UPDATE watchlist SET status = :status WHERE user_id = :user_id AND movie_id = :movie_id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':user_id' => $user_id, ':status' => $status, ':movie_id' => $movie_id]);
+        }
+        // Refresh the page
+        header("Location: index.php");
+        exit();
+    }
+
+
+
     // Check if movie_id is provided in URL
     if (!isset($_GET['movie_id'])) {
         // Show all movies in the database
@@ -149,7 +176,7 @@ try {
             }
             
             // Refresh the page
-            header("Location: movie.php?movie_id=" . $movie_id);
+            header("Location: index.php?movie_id=" . $movie_id);
             exit();
         }
 

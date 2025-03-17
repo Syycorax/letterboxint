@@ -11,7 +11,32 @@ try {
     // Create PDO connection
     $pdo = new PDO($dsn, $dbUser, $dbPassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    require_once("../header.php");
+    
+    if (isset($_POST['watch'])) {
+        if (!isset($_POST['remove'])) {
+            // Add movie to watchlist
+            $movie_id = $_POST['movie_id'];
+            $user = $_COOKIE['username'];
+            $user_id = getUserIdByUsername($user, $pdo);
+            $status = "to_watch";
+            $sql = "INSERT INTO watchlist (user_id,status,movie_id) VALUES (:user_id,:status, :movie_id)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':user_id' => $user_id, ':status' => $status, ':movie_id' => $movie_id]);
+        } else {
+            // Set movie as Seen
+            $movie_id = $_POST['movie_id'];
+            $user = $_COOKIE['username'];
+            $user_id = getUserIdByUsername($user, $pdo);
+            $status = "seen";
+            $sql = "UPDATE watchlist SET status = :status WHERE user_id = :user_id AND movie_id = :movie_id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':user_id' => $user_id, ':status' => $status, ':movie_id' => $movie_id]);
+        }
+        // Refresh the page
+        header("Location: index.php");
+        exit();
+    }
+    
     // Check if user is logged in
     if (!isset($_COOKIE['username'])) {?>
         <div class="reviews-container">
