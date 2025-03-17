@@ -53,7 +53,7 @@ if (isset($_POST['delete_movie'])) {
 }
 
 // Get all users
-$usersql = "SELECT user_id, username FROM user_account";
+$usersql = "SELECT * FROM users_not_admin";
 $userstmt = $pdo->query($usersql);
 $users = $userstmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -83,8 +83,7 @@ require_once("../header.php");
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($users as $user):
-                    if ($user["username"]){?>
+                <?php foreach ($users as $user): ?>
                 <tr>
                     <td><?php echo $user['username']; ?></td>
                     <td>
@@ -94,7 +93,7 @@ require_once("../header.php");
                         </form>
                     </td>
                 </tr>
-                <?php }endforeach; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </section>
