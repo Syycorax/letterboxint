@@ -3,7 +3,7 @@ require_once('functions.php');
 
 // Database connection
 $dsn = 'mysql:host=mysql;dbname=database';
-$dbUser = 'user';
+$dbUser = 'utilisateur';
 $dbPassword = 'password';
 $page = "Home";
 try {

@@ -7,7 +7,7 @@ if (isset($_COOKIE['username'])) {
     $user = null;
 }
 $dsn = 'mysql:host=mysql;dbname=database';
-$dbUser = 'user';
+$dbUser = 'utilisateur';
 $dbPassword = 'password';
 try {
     // Create PDO connection

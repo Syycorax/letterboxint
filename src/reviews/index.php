@@ -1,7 +1,7 @@
 <?php
 // Database connection
 $dsn = 'mysql:host=mysql;dbname=database';
-$dbUser = 'user';
+$dbUser = 'utilisateur';
 $dbPassword = 'password';
 if (!isset($getUserIdByUsername)) {
     require_once("../functions.php");

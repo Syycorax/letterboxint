@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($username) && !empty($email) && !empty($password)) {
         // Simple database connection
         $dsn = 'mysql:host=mysql;dbname=database';
-        $dbUser = 'user';
+        $dbUser = 'utilisateur';
         $dbPassword = 'password';
 
         try {
