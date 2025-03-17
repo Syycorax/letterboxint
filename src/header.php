@@ -1,7 +1,18 @@
 <?php
 // get the page variable from caller's code
 require_once("functions.php");
-$user = isset($_COOKIE['username']) ? $_COOKIE['username'] : '';?>
+$user = $_COOKIE['username'];
+$dsn = 'mysql:host=mysql;dbname=database';
+$dbUser = 'user';
+$dbPassword = 'password';
+try {
+    // Create PDO connection
+    $pdo = new PDO($dsn, $dbUser, $dbPassword);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +75,9 @@ $user = isset($_COOKIE['username']) ? $_COOKIE['username'] : '';?>
                 <a href="/friends" class="<?= $page === 'Friends' ? 'active' : '' ?>">Friends</a>
                 <a href="/reviews" class="<?= $page === 'Reviews' ? 'active' : '' ?>">Reviews</a>
                 <a href="/movie" class="<?= $page === 'Movie' ? 'active' : '' ?>">Movie</a>
-                <a href="/admin" class="<?= $page === 'Admin' ? 'active' : '' ?> <?= $user != 'Admin' ? 'hidden' : '' ?>">Admin</a>
+                <?php if (isAdmin($user, $pdo)): ?>
+                    <a href="/admin" class="<?= $page === 'Admin' ? 'active' : '' ?>">Admin</a>
+                <?php endif; ?>
             </div>
             <div class="spacer"></div>
             <div class="user-actions">

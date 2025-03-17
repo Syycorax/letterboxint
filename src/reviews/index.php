@@ -18,7 +18,11 @@ try {
     $is_logged_in = isset($_COOKIE['username']);
     
     if ($is_logged_in) {
-        $username = $_COOKIE['username'];
+        if (isset($_GET['user'])){
+            $username = $_GET['user'];
+        } else {
+            $username = $_COOKIE['username'];
+        }
         $user_id = getUserIdByUsername($username, $pdo);
         
         // Fetch all reviews by the user with movie details

@@ -250,7 +250,7 @@ require_once("../header.php");
                         <li>
                             <div class="user-card">
                                 <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=<?php echo htmlspecialchars($friend['username']); ?>" alt="Avatar" class="avatar">
-                                <span class="username"><?php echo htmlspecialchars($friend['username']); ?></span>
+                                <span class="username"><a href="/profile?user=<?php echo $friend['username']; ?>"><?php echo htmlspecialchars($friend['username']); ?></a></span>
                                 <span class="date-added">Friends since <?php echo date('M d, Y', strtotime($friend['date_added'])); ?></span>
                                 <div class="friend-actions">
                                     <!-- <a href="profile.php?user_id=<?php echo $friend['user_id']; ?>" class="btn btn-small">View Profile</a> -->

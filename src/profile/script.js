@@ -11,13 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const username = getCookie('username');
 
     if (username) {
-        // Update all username displays
-        document.querySelectorAll('.username').forEach(el => {
-            el.textContent = username;
-        });
+
 
         // Update avatar (using dynamic avatar generation)
-        const avatarUrls = document.querySelectorAll('.avatar, .large-avatar');
+        const avatarUrls = document.querySelectorAll('.avatar');
         avatarUrls.forEach(avatar => {
             avatar.src = `https://api.dicebear.com/8.x/avataaars/svg?seed=${username}`;
             avatar.alt = `${username}'s Avatar`;

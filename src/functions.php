@@ -44,5 +44,11 @@ function createMovieCard($movie, $pdo) {
     return $html;
 }
 
-
+function isAdmin($user, $pdo) {
+    $sql = "SELECT is_admin FROM user_account WHERE username = :username";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':username' => $user]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result['is_admin'] : false;
+}
 ?>

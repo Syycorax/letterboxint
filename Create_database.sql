@@ -101,3 +101,12 @@ CREATE TABLE director_association(
    FOREIGN KEY(movie_id) REFERENCES movie(movie_id),
    FOREIGN KEY(director_id) REFERENCES director(director_id)
 );
+
+CREATE VIEW user_review AS
+SELECT user_account.username, movie.title, review.note, review.comment
+FROM user_account
+JOIN review ON user_account.user_id = review.user_id
+JOIN movie ON review.movie_id = movie.movie_id;
+
+CREATE USER 'admin@localhost' IDENTIFIED BY 'admin';
+GRANT DELETE ON * TO 'admin@localhost';

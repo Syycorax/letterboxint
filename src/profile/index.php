@@ -5,19 +5,22 @@ require_once('../functions.php');
 $dsn = 'mysql:host=mysql;dbname=database';
 $dbUser = 'user';
 $dbPassword = 'password';
-
-// Check if user is logged in
-if (!isset($_COOKIE['username'])) {
-    echo "You need to be logged in to view your profile.";
-    exit;
+if (isset($_GET['user'])){
+    $username = $_GET['user'];
+} else {
+    if (!isset($_COOKIE['username'])) {
+        echo "You need to be logged in to view your profile.";
+        exit;
+    }
+    else{
+        $username = $_COOKIE['username'];
+    }
 }
-
 try {
     // Create PDO connection
     $pdo = new PDO($dsn, $dbUser, $dbPassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $username = $_COOKIE['username'];
     $user_id = getUserIdByUsername($username, $pdo);
 
     // Fetch the number of films watched
@@ -33,7 +36,7 @@ try {
     $films_in_watchlist = $stmt->fetch(PDO::FETCH_ASSOC)['films_in_watchlist'];
 
     // Fetch the number of friends
-    $sql = "SELECT COUNT(*) AS friends FROM friendship WHERE (user_id_A = :user_id OR user_id_B = :user_id) AND status = 'Actif'";
+    $sql = "SELECT COUNT(*) AS friends FROM friendship WHERE (user_id_A = :user_id OR user_id_B = :user_id) AND status = 'accepted'";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':user_id' => $user_id]);
     $friends = $stmt->fetch(PDO::FETCH_ASSOC)['friends'];
@@ -59,9 +62,9 @@ try {
         <section class="profile-header">
             <div class="profile-banner"></div>
             <div class="profile-info">
-                <img src="" alt="Profile Avatar" class="large-avatar">
+                <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=<?php echo $username; ?>" alt="Profile Picture" class="large-avatar">
                 <div class="profile-details">
-                    <h1 class="username">User</h1>
+                    <h1 class="username"><?php echo $username; ?></h1>
                     <p>Film enthusiast | Critic | Cinephile</p>
                     <div class="profile-stats">
                         <div class="stat">
@@ -77,10 +80,6 @@ try {
                             <span>Friends</span>
                         </div>
                     </div>
-                    <div class="profile-actions">
-                        <button class="edit-profile-btn">Edit Profile</button>
-                        <button class="follow-btn">Follow</button>
-                    </div>
                 </div>
             </div>
         </section>
@@ -88,31 +87,15 @@ try {
         <!-- Rest of the HTML remains the same -->
         <section class="profile-navigation">
             <nav>
-                <a href="#" class="active">Films</a>
-                <a href="#">Reviews</a>
-                <a href="#">Lists</a>
-                <a href="#">Watchlist</a>
-                <a href="#">Network</a>
+                <a href="/reviews?user=<?php echo $username; ?>">Reviews</a>
+                <a href="/watchlist?user=<?php echo $username; ?>">Watchlist</a>
+                <a href="/friends">Network</a>
             </nav>
         </section>
 
-        <!-- Previous content remains unchanged -->
     </main>
 
-    <footer>
-        <div class="footer-links">
-            <a href="#">About</a>
-            <a href="#">Help</a>
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-        </div>
-        <div class="social-links">
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-        </div>
-        <p>&copy; 2024 Letterboxint Limited</p>
-    </footer>
+    <?php require_once('../footer.php'); ?>
 
     <script src="script.js"></script>
 </body>
