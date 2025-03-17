@@ -52,6 +52,17 @@ if (isset($_POST['delete_movie'])) {
     exit();
 }
 
+// Handle delete review request
+if (isset($_POST['delete_review'])) {
+    $reviewId = $_POST['review_id'];
+    $sql = "DELETE FROM review WHERE review_id = :review_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':review_id' => $reviewId]);
+    
+    header("Location: /admin/index.php?message=Review+deleted");
+    exit();
+}
+
 // Get all users
 $usersql = "SELECT * FROM users_not_admin";
 $userstmt = $pdo->query($usersql);
@@ -61,6 +72,11 @@ $users = $userstmt->fetchAll(PDO::FETCH_ASSOC);
 $moviesql = "SELECT movie_id, title FROM movie";
 $moviestmt = $pdo->query($moviesql);
 $movies = $moviestmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Get all reviews
+$reviewsql = "SELECT review.*, movie.title AS movie_title FROM review JOIN movie ON review.movie_id = movie.movie_id";
+$reviewstmt = $pdo->query($reviewsql);
+$reviews = $reviewstmt->fetchAll(PDO::FETCH_ASSOC);
 
 $page = "Admin";
 require_once("../header.php");
@@ -122,6 +138,35 @@ require_once("../header.php");
             </tbody>
         </table>
     </section>
+    <section class="admin-section">
+        <h2>Manage Reviews</h2>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Movie</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($reviews as $review): ?>
+                <tr>
+                    <td><?php echo $review['movie_title']; ?></td>
+                    <td><?php echo $review['note']; ?></td>
+                    <td><?php echo $review['comment']; ?></td>
+                    <td>
+                        <form method="post" action="/admin/index.php" onsubmit="return confirm('Are you sure you want to delete this review?');">
+                            <input type="hidden" name="review_id" value="<?php echo $review['review_id']; ?>">
+                            <button type="submit" name="delete_review" class="delete-btn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </section>
+
 </main>
 
 <style>
@@ -166,6 +211,10 @@ require_once("../header.php");
         margin-bottom: 20px;
         border-left: 5px solid #4CAF50;
         color: #000000;
+    }
+    td{
+        word-wrap: break-word;
+        max-width: 300px;
     }
 </style>
 
