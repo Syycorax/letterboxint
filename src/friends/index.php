@@ -11,11 +11,18 @@ try {
     // Create PDO connection
     $pdo = new PDO($dsn, $dbUser, $dbPassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+    require_once("../header.php");
     // Check if user is logged in
-    if (!isset($_COOKIE['username'])) {
-        // Redirect to login page if not logged in
-        header("Location: /index.php");
+    if (!isset($_COOKIE['username'])) {?>
+        <div class="reviews-container">
+            <div class="login-required">
+                <h2>Please sign in to view your friends</h2>
+                <p>Sign in to keep track of your firendships</p>
+                <button class="login-btn start-reviewing">Sign In</button>
+            </div>
+        </div>
+        <?php
+        require_once("../footer.php");
         exit();
     }
     

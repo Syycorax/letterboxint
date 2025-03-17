@@ -5,7 +5,7 @@
     --accent-color: #40bcf4;
     --card-bg: #2c3440;
 }
-
+primary-bg
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui;
     background-color: var(--primary-bg);
     color: var(--text-color);
     line-height: 1.6;
@@ -33,15 +33,19 @@ header {
     color: var(--accent-color);
 }
 
-.nav-links a {
+a {
     color: var(--text-color);
     text-decoration: none;
     margin: 0 1rem;
     transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+a:hover {
     color: var(--accent-color);
+}
+
+.film-card a {
+    margin: 0;
 }
 
 .user-actions {
@@ -50,7 +54,7 @@ header {
     gap: 1rem;
 }
 
-.user-actions input {
+input {
     padding: 0.5rem;
     background-color: var(--card-bg);
     border: none;
@@ -70,10 +74,6 @@ header {
 
 .login-btn:hover, .signup-btn:hover, .signup-large:hover .watchlist-btn:hover,.rating-btn:hover,.add-btn:hover{
     opacity: 0.9;
-}
-
-.rating-btn{
-    margin-top: 100px;
 }
 .hero {
     text-align: center;
@@ -115,19 +115,6 @@ footer {
     padding: 2rem;
 }
 
-.footer-links a {
-    color: var(--text-color);
-    margin: 0 1rem;
-    text-decoration: none;
-}
-
-.social-links a {
-    color: var(--accent-color);
-    margin: 0 0.5rem;
-    text-decoration: none;
-}
-
-/* Add to existing styles.css */
 .auth-modal {
     position: fixed;
     top: 0;
@@ -165,25 +152,7 @@ footer {
     color: var(--accent-color);
 }
 
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.5rem;
-    background-color: var(--card-bg);
-    border: none;
-    color: var(--text-color);
-    border-radius: 4px;
-}
-
-.modal-content button {
+/* .modal-content button {
     width: 100%;
     padding: 0.75rem;
     background-color: var(--accent-color);
@@ -192,7 +161,7 @@ footer {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 1rem;
-}
+} */
 
 .modal-footer {
     text-align: center;
@@ -212,7 +181,7 @@ footer {
     gap: 0.75rem;
 }
 
-.user-profile.hidden {
+.hidden {
     display: none;
 }
 
@@ -1002,5 +971,227 @@ li {
     .btn, .btn-small {
         min-width: 60px;
         text-align: center;
+    }
+}
+
+    /* Review list styles */
+.reviews-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.review-card {
+    background-color: #2c3440;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    padding: 20px;
+    display: flex;
+    position: relative;
+    /* No width constraints to allow natural flow */
+}
+
+.review-poster {
+    width: 100px;
+    min-width: 100px;
+    border-radius: 4px;
+    margin-right: 20px;
+    height: 100%;
+}
+
+.review-content {
+    flex-grow: 1;
+    min-width: 0; /* This is crucial - allows the content to shrink below its natural width */
+}
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.review-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 0;
+}
+.review-date {
+    color: #aaa;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.star-rating {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+.star {
+    color: #ddd;
+    margin-right: 2px;
+}
+.star.filled {
+    color: #f90;
+}
+.review-text {
+    margin: 15px 0;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+.review-actions {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap to next line when space is limited */
+    gap: 10px;
+}
+.edit-btn, .delete-btn {
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    cursor: pointer;
+    background: none;
+    border: 1px solid;
+}
+.edit-btn {
+    border-color: #40bcf4;
+    color: #40bcf4;
+}
+.delete-btn {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+.edit-btn:hover {
+    background-color: #40bcf41a;
+}
+.delete-btn:hover {
+    background-color: #ff6b6b1a;
+}
+.login-required {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #2c3440;
+    border-radius: 5px;
+}
+.page-title {
+    text-align: center;
+    margin: 30px 0;
+}
+.alert {
+    background-color: #4caf5033;
+    color: #4caf50;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.empty-reviews {
+    text-align: center;
+    padding: 30px;
+    background-color: #2c3440;
+    border-radius: 5px;
+    color: #aaa;
+}
+.start-reviewing {
+    margin-top: 20px;
+    display: inline-block;
+    background-color: #ff8000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.delete-confirm-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+.delete-confirm-content {
+    background-color: #2c3440;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+}
+.delete-confirm-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+.delete-confirm-cancel {
+    padding: 8px 16px;
+    background: none;
+    border: 1px solid #aaa;
+    color: #aaa;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.delete-confirm-proceed {
+    padding: 8px 16px;
+    background-color: #ff6b6b;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+/* Header styles from index.php */
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #fff;
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+.nav-links a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+.user-actions input[type="search"] {
+    margin-right: 10px;
+    padding: 5px;
+}
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.spacer {
+    flex-grow: 1;
+}
+.hidden {
+    display: none;
+}
+/* Media queries for responsive design */
+@media (max-width: 500px) {
+    .review-card {
+        flex-direction: column; /* Stack vertically on smaller screens */
+    }
+    
+    .review-poster {
+        width: 100px;
+        margin-right: 0;
+        margin-bottom: 15px;
     }
 }

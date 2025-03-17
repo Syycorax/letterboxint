@@ -43,7 +43,7 @@ function createAuthModal(type) {
                         <input type="password" id="confirm-password" required>
                     </div>
                 ` : ''}
-                <button type="submit">${isSignUp ? 'Create Account' : 'Sign In'}</button>
+                <button class="login-btn" type="submit">${isSignUp ? 'Create Account' : 'Sign In'}</button>
             </form>
             <div class="modal-footer">
                 ${isSignUp 

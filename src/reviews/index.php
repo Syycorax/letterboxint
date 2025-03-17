@@ -429,8 +429,7 @@ function generateStarRating($rating) {
             const loginButtons = document.querySelectorAll('.login-btn');
             loginButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Redirect to login page or show login modal
-                    alert('Login functionality would be implemented here');
+                    createAuthModal("login");
                 });
             });
             

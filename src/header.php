@@ -1,6 +1,8 @@
 <?php
 // get the page variable from caller's code
-require_once("functions.php");?>
+require_once("functions.php");
+$user = isset($_COOKIE['username']) ? $_COOKIE['username'] : '';?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +64,7 @@ require_once("functions.php");?>
                 <a href="/friends" class="<?= $page === 'Friends' ? 'active' : '' ?>">Friends</a>
                 <a href="/reviews" class="<?= $page === 'Reviews' ? 'active' : '' ?>">Reviews</a>
                 <a href="/movie" class="<?= $page === 'Movie' ? 'active' : '' ?>">Movie</a>
+                <a href="/admin" class="<?= $page === 'Admin' ? 'active' : '' ?> <?= $user != 'Admin' ? 'hidden' : '' ?>">Admin</a>
             </div>
             <div class="spacer"></div>
             <div class="user-actions">
