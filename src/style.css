@@ -845,7 +845,7 @@ li {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 120px; /* Limit username width */
+    /* max-width: 120px; Limit username width */
 }
 
 .date-added {

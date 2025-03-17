@@ -53,27 +53,7 @@ try {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Letterboxd</div>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="#">Films</a>
-                <a href="#">Lists</a>
-                <a href="#">Network</a>
-            </div>
-            <div class="user-actions">
-                <input type="search" placeholder="Search movies, lists, people...">
-                <div id="user-profile" class="user-profile">
-                    <a href="/profile" class="profile-link">
-                        <img src="" alt="User Avatar" class="avatar">
-                        <span class="username">User</span>
-                    </a>
-                    <button class="logout-btn">Logout</button>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php require_once("../header.php")?>
 
     <main class="profile-page">
         <section class="profile-header">
