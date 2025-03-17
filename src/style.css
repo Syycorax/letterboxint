@@ -14,6 +14,8 @@ primary-bg
 
 body {
     font-family: system-ui;
+    margin: 0;
+    padding: 0;
     background-color: var(--primary-bg);
     color: var(--text-color);
     line-height: 1.6;
@@ -75,10 +77,14 @@ input {
 .login-btn:hover, .signup-btn:hover, .signup-large:hover .watchlist-btn:hover,.rating-btn:hover,.add-btn:hover{
     opacity: 0.9;
 }
+
 .hero {
+    background: linear-gradient(var(--secondary-bg), rgba(0, 0, 0, .6),var(--primary-bg)), url('hero.webp');
+    background-size: cover;
+    background-position: center;
+    color: white;
     text-align: center;
-    padding: 4rem 2rem;
-    background-color: rgba(32, 48, 64, 0.5);
+    padding: 100px 0;
 }
 
 .hero h1 {
@@ -764,7 +770,7 @@ li {
     white-space: nowrap; /* Prevent button text from wrapping */
     overflow: hidden;
     text-overflow: ellipsis; /* Add ellipsis for overflowing text */
-    max-width: 120px; /* Limit maximum width of buttons */
+    /* max-width: 120px; Limit maximum width of buttons */
 }
 
 .btn-small {
