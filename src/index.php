@@ -65,7 +65,7 @@ require_once("header.php");
                         echo '<img src="' . $movie["poster_path"] . '" alt="' . $movie["title"] . '">';
                         echo '</a>';
                         echo '<h3>' . $movie["title"] . '</h3>';
-                        echo '<form method="post" action="index.php">';
+                        echo '<form class="button-form" method="post" action="index.php">';
                         $film_in_user_watchlist = false;
                         $film_seen = false;
                         if (isset($_COOKIE['username'])) {
