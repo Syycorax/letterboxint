@@ -1,7 +1,11 @@
 <?php
 // get the page variable from caller's code
 require_once("functions.php");
-$user = $_COOKIE['username'];
+if (isset($_COOKIE['username'])) {
+    $user = $_COOKIE['username'];
+} else {
+    $user = null;
+}
 $dsn = 'mysql:host=mysql;dbname=database';
 $dbUser = 'user';
 $dbPassword = 'password';

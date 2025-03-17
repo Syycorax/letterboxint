@@ -42,9 +42,6 @@ a {
     transition: color 0.3s ease;
 }
 
-a:hover {
-    color: var(--accent-color);
-}
 
 .film-card a {
     margin: 0;
@@ -72,6 +69,10 @@ input {
     border-radius: 4px;
     cursor: pointer;
     transition: opacity 0.3s ease;
+}
+
+.button-form{
+    margin-bottom: 20px !important;
 }
 
 .login-btn:hover, .signup-btn:hover, .signup-large:hover .watchlist-btn:hover,.rating-btn:hover,.add-btn:hover{
