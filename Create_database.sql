@@ -93,27 +93,16 @@ CREATE TABLE director_association(
    FOREIGN KEY(director_id) REFERENCES director(director_id) ON DELETE CASCADE
 );
 CREATE VIEW user_watched_movies AS
-SELECT 
-   ua.user_id,
-   ua.username,
-   COUNT(w.movie_id) AS watched_movies_count
-FROM 
-   user_account ua
-JOIN 
-   watchlist w ON ua.user_id = w.user_id
-WHERE 
-   w.status = 'seen'
-GROUP BY 
-   ua.user_id, ua.username;
+SELECT user_account.user_id,user_account.username,COUNT(watchlist.movie_id) AS watched_movies_count
+FROM user_account
+JOIN watchlist ON user_account.user_id = watchlist.user_id
+WHERE watchlist.status = 'seen'
+GROUP BY user_account.user_id, user_account.username;
 
 CREATE VIEW users_not_admin AS
-SELECT 
-   user_id,
-   username,
-FROM
-   user_account
-WHERE
-   is_admin = FALSE;
+SELECT user_id, username
+FROM user_account
+WHERE is_admin = FALSE;
 
 
 CREATE USER 'utilisateur'@'%' IDENTIFIED BY 'password';
