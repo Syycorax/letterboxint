@@ -356,7 +356,7 @@ function generateStarRating($rating) {
                 <div class="empty-reviews">
                     <h2>You haven't reviewed any movies yet</h2>
                     <p>Start rating and reviewing movies to keep track of your thoughts and opinions.</p>
-                    <a href="index.php" class="start-reviewing">Discover Movies</a>
+                    <a href="../index.php" class="start-reviewing">Discover Movies</a>
                 </div>
             <?php else: ?>
                 <?php foreach ($user_reviews as $review): ?>

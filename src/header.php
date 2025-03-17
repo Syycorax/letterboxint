@@ -63,7 +63,7 @@ $user = isset($_COOKIE['username']) ? $_COOKIE['username'] : '';?>
                 <a href="/watchlist" class="<?= $page === 'Watchlist' ? 'active' : '' ?>">Watchlist</a>
                 <a href="/friends" class="<?= $page === 'Friends' ? 'active' : '' ?>">Friends</a>
                 <a href="/reviews" class="<?= $page === 'Reviews' ? 'active' : '' ?>">Reviews</a>
-                <a href="/movie" class="<?= $page === 'Movie' ? 'active' : '' ?>">Movie</a>
+                <a href="/movie" class="<?= $page === 'Movies' ? 'active' : '' ?>">Movies</a>
                 <a href="/admin" class="<?= $page === 'Admin' ? 'active' : '' ?> <?= $user != 'Admin' ? 'hidden' : '' ?>">Admin</a>
             </div>
             <div class="spacer"></div>

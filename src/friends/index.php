@@ -16,8 +16,8 @@ try {
     if (!isset($_COOKIE['username'])) {?>
         <div class="reviews-container">
             <div class="login-required">
-                <h2>Please sign in to view your friends</h2>
-                <p>Sign in to keep track of your firendships</p>
+                <h2>Someone wants a Curly ?</h2>
+                <p>Sign in to keep track of your friendships</p>
                 <button class="login-btn start-reviewing">Sign In</button>
             </div>
         </div>

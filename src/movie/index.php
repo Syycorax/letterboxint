@@ -127,7 +127,7 @@ if (isset($_POST['watch'])) {
     }
     
     // Refresh the page
-    header("Location: movie.php?movie_id=" . $movie_id);
+    header("Location: index.php?movie_id=" . $movie_id);
     exit();
 }
 
