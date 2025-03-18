@@ -40,7 +40,7 @@ function createMovieCard($movie, $pdo) {
         $html .= '<button type="submit" name="watch" class="watchlist-btn">add to watchlist</button>';
     }
     $html .= '</form>';
-    $html .= '<a class="rating-btn" name="' . $movie["title"] . '">Add review</a>';
+    $html .= '<a href="/review?movie_id=' . $movie["movie_id"] . '" class="rating-btn" name="' . $movie["title"] . '">Add review</a>';
     $html .= '</div>';
 
     return $html;

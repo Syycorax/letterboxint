@@ -111,7 +111,7 @@ GRANT SELECT, INSERT, UPDATE ON database.movie TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.review TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.user_account TO 'utilisateur'@'%';
 GRANT SELECT, INSERT, UPDATE ON database.watchlist TO 'utilisateur'@'%';
-GRANT SELECT, INSERT, UPDATE ON database.friendship TO 'utilisateur'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE ON database.friendship TO 'utilisateur'@'%';
 GRANT SELECT ON  database.casting TO 'utilisateur'@'%';
 GRANT SELECT ON database.genre_association TO 'utilisateur'@'%';
 GRANT SELECT ON database.director_association TO 'utilisateur'@'%';
