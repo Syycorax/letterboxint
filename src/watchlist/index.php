@@ -7,6 +7,27 @@ $dbUser = 'utilisateur';
 $dbPassword = 'password';
 $page = "Watchlist";
 
+if(isset($_GET['user'])){
+    $username = $_GET['user'];
+} else {
+    if (!isset($_COOKIE['username'])) {
+        require_once("../header.php");
+        ?>        <div class="reviews-container">
+            <div class="login-required">
+                <h2>Don't know what to watch tonight ?</h2>
+                <p>Sign in to keep track of your watchlist</p>
+                <button class="login-btn start-reviewing" >Sign In</button>
+            </div>
+        </div>
+        <?php
+        require_once("../footer.php");
+        exit();
+    }
+    else{
+        $username = $_COOKIE['username'];
+    }
+}
+
 try {
     // Create PDO connection
     $pdo = new PDO($dsn, $dbUser, $dbPassword);
@@ -36,22 +57,7 @@ try {
         header("Location: index.php");
         exit();
     }
-    
-    // Check if user is logged in
-    if (!isset($_COOKIE['username'])) {?>
-        <div class="reviews-container">
-            <div class="login-required">
-                <h2>Don't know what to watch tonight ?</h2>
-                <p>Sign in to keep track of your watchlist</p>
-                <button class="login-btn start-reviewing">Sign In</button>
-            </div>
-        </div>
-        <?php
-        require_once("../footer.php");
-        exit();
-    }
 
-    $username = $_COOKIE['username'];
     $user_id = getUserIdByUsername($username, $pdo);
     
     // Fetch trending movies

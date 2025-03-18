@@ -429,31 +429,6 @@ function generateStarRating($rating) {
                 }
             });
             
-            // Login/Signup buttons functionality
-            const loginButtons = document.querySelectorAll('.login-btn');
-            loginButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    createAuthModal("login");
-                });
-            });
-            
-            const signupButtons = document.querySelectorAll('.signup-btn');
-            signupButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Redirect to signup page or show signup modal
-                    alert('Signup functionality would be implemented here');
-                });
-            });
-            
-            // Logout button functionality
-            const logoutButton = document.querySelector('.logout-btn');
-            if (logoutButton) {
-                logoutButton.addEventListener('click', function() {
-                    // Clear cookies and redirect
-                    document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                    window.location.reload();
-                });
-            }
         });
     </script>
 </body>
