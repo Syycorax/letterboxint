@@ -88,7 +88,7 @@ function createAuthModal(type) {
         // Use Fetch API to submit form
         const formData = new FormData(form);
         
-        fetch(isSignUp ? 'register.php' : 'login.php', {
+        fetch(isSignUp ? '/register.php' : '/login.php', {
             method: 'POST',
             body: formData
         })
@@ -157,11 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("No username cookie");
   }
   // Add authentication modal event listeners
-  const signinBtn = document.querySelector(".login-btn");
+  const signinBtns = document.querySelectorAll(".login-btn","login-btn");
   const signupBtns = document.querySelectorAll(".signup-btn, .signup-large");
   const signoutBtn = document.querySelector(".logout-btn");
 
-  signinBtn.addEventListener("click", () => createAuthModal("signin"));
+  signinBtns.forEach((btn) => {
+    btn.addEventListener("click", () => createAuthModal("signin"));
+    });
   signupBtns.forEach((btn) => {
     btn.addEventListener("click", () => createAuthModal("signup"));
   });
